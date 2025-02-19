@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "module": "ESNext",
+      "target": "es5",
+      "jsx": "react-jsx", // чтобы не прописывать import React (работает с 18 версии реакта)
+      "allowJs": true,
+      "moduleResolution": "node",
+      // следующие два свойства для правильной обработки импортов
+      // какие-то библиотеки могут не иметь дефолтного импорта лоадеры вроде ts-loader babel-loader автоматически 
+      // создают их
+      // с allowSyntheticDefaultImports можно писать import React from 'react' вместо import * as React from 'react'
+      "allowSyntheticDefaultImports": true,
+      // позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью 
+      // import (в самих пакетах импорт вызывается так require module.export), например, import Moment from 'moment'
+      "esModuleInterop": true,
+      // путь до базовой директории
+      "baseUrl": ".",
+      // соощаем ts о путях и как они типизируются
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    },
+    "ts-node": {
+      "compilerOptions": {
+        "module": "CommonJS" // ts-node поддерживает только модуль CommonJS
+      }
+    }
+  }
